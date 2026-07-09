@@ -1,0 +1,24 @@
+[package]
+name = "sidekick"
+version = "0.1.0"
+description = "Local AI tutor for creative tools"
+authors = ["you"]
+edition = "2021"
+
+[lib]
+name = "sidekick_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["macos-private-api"] }
+tauri-plugin-opener = "2"
+# Registers a system-wide keyboard shortcut that fires even when
+# the Tauri window is not focused (i.e. while Ableton is in front).
+tauri-plugin-global-shortcut = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Used to base64-encode the screenshot bytes before sending to JS.
+base64 = "0.22"
